@@ -1,126 +1,94 @@
 @extends('dashboard_layouts.admin_main')
 
-@section('body')
+@section('content')
 
-<div class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-10">
-          <div class="card">
-            <div class="card-header card-header-primary">
-              <h4 class="card-title">Manage Admin</h4>
+    <div class="row justify-content-center">
+        <div class="col-lg-12 ">
+            <div class="card">
+                <div class="card-header">Manage Admin</div>
+                <div class="card-body">
+                    <div class="card-title">
+                        <h3 class="text-center title-2">Create Admin</h3>
+                    </div>
+                    <hr>
+                    <form action="/dashboard/admin" method="post" >
+                        @csrf
+                        <div class="form-group has-success">
+                            <label for="cc-name" class="control-label mb-1">Full Name</label>
+                            <input id="cc-name" value="{{ old('fullname') }}" name="fullname" type="text" class="form-control cc-name valid">
+                            @error('fullname')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group has-success">
+                            <label for="cc-name" class="control-label mb-1">Email address</label>
+                            <input id="cc-name" value="{{ old('email') }}" name="email" type="text"
+                                   class="form-control cc-name valid">
+                            @error('email')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="cc-number" class="control-label mb-1">Password</label>
+                            <input id="cc-number"  name="password" type="password" class="form-control cc-number
+                            identified
+                            visa" value="">
+                            @error('password')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="cc-number" class="control-label mb-1">Confirm Password</label>
+                            <input id="cc-number" name="password_confirmation" type="password" class="form-control cc-number
+                             identified visa" value="" >
+                            @error('password_confirmation')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                <span id="payment-button-amount">Create Admin</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="card-body">
-                <form action="" method="" enctype="multipart/form-data">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="form-group">
-                                <label class="bmd-label-floating">Full Name</label>
-                                <input type="text" name="fullname" class="form-control" value="">
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="form-group">
-                                <label class="bmd-label-floating">Email address</label>
-                                <input type="email" name="email" class="form-control" value="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="form-group">
-                                <label class="bmd-label-floating">Password</label>
-                                <input type="password" name="password" class="form-control" value="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="form-group">
-                                <label class="bmd-label-floating">Confirm Password</label>
-                                <input type="password" name="confirm_password" class="form-control" value="">
-                            </div>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary pull-right" name="submit">Add</button>
-                    <div class="clearfix"></div>
-                </form>
+
+
+
+        <div class="row m-t-30">
+            <div class="col-md-12">
+                <!-- DATA TABLE-->
+                <div class="table-responsive m-b-40">
+                    <div class="card-header text-center bg-light"><strong>Admin Table</strong></div>
+                    <table class="table table-borderless table-data3">
+                        <thead class="bg-info">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($admins as $admin)
+                            <tr>
+                                <td>{{$admin->id}}</td>
+                                <td>{{$admin->fullname}}</td>
+                                <td>{{$admin->email}}</td>
+                                <td><a class="text-primary" href="/dashboard/admin/{{$admin->id}}/edit"><span class="btn btn-primary">edit</span></a></td>
+                                <td class="text-primary"><a class="text-danger" href="/dashboard/admin/{{$admin->id}}"><span
+                                            class="btn btn-danger">delete</span></a></td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <!-- END DATA TABLE-->
             </div>
-          </div>
         </div>
-      </div>
     </div>
-
-
-
-
-  <div class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-header card-header-primary">
-              <h4 class="card-title ">Admin Table</h4>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table">
-                  <thead class=" text-primary">
-                    <th>
-                      ID
-                    </th>
-                    <th>
-                      Full Name
-                    </th>
-                    <th>
-                      Email
-                    </th>
-                    <th>
-                      Password
-                    </th>
-                    <th>
-                      Edit
-                    </th>
-                    <th>
-                      Delete
-                    </th>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        1
-                      </td>
-                      <td>
-                        Dakota Rice
-                      </td>
-                      <td>
-                        Niger
-                      </td>
-                      <td>
-                        Oud-Turnhout
-                      </td>
-                      <td>
-                        <a class="text-primary" href="#"><span class="material-icons">
-                            edit
-                            </span></a>
-                      </td>
-                      <td class="text-primary">
-                        <a class="text-danger" href="#"><span class="material-icons">
-                            delete
-                            </span></a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
- </div>
-
 
 @endsection

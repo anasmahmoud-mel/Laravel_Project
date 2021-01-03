@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\place;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return redirect('/index');
     }
 
     /**
@@ -24,7 +25,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $category=Category::all();
+        return view('dashboard_veiw.manage_category',compact('category'));
     }
 
     /**
@@ -35,7 +37,25 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'name' => 'required',
+            'image' => 'required'
+        ]);
+
+        if ($request->file('image')) {
+            $file = $request->file('image') ;
+            $ext = $file->getClientOriginalExtension() ;
+            $filename = time() . '.' . $ext ;
+            $file->move('uploads/images', $filename);
+        }
+
+        $name      = request('name');
+        Category::create([
+            'name'  => $name,
+            'image' => $filename
+        ]);
+        return redirect('/dashboard/category');
     }
 
     /**
@@ -57,7 +77,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('dashboard_veiw.manage_category_edit',compact('category'));
     }
 
     /**
@@ -69,7 +89,28 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        if ($request->file('image')) {
+            $file = $request->file('image') ;
+            $ext = $file->getClientOriginalExtension() ;
+            $filename = time() . '.' . $ext ;
+            $file->move('uploads/images', $filename);
+        }else {
+            $filename = $category->image;
+        }
+
+        $name      = request('name');
+
+        $category=Category::find($category->id);
+        $category->name =$name;
+        $category->image =$filename;
+        $category->save();
+
+        return redirect('/dashboard/category');
     }
 
     /**
@@ -78,8 +119,30 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy ($id)
     {
-        //
+        Category::findOrFail($id)->delete();
+        return redirect('/dashboard/category');
     }
+
+    public function categryView(){
+
+        $category=Category::all();
+        return view('public_veiw.public_home',compact('category'));
+
+    }
+
+
+    public function categryFind($id){
+
+        $places = place::where('category_id','=',$id)->get();
+
+        $category = Category::where('id','=',$id)->first();
+
+
+        return view('public_veiw.public_category',compact('places','category'));
+
+
+    }
+
 }

@@ -2,466 +2,304 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('dashboard_theme/img/apple-icon.png')}}">
-  <link rel="icon" type="image/png" href="{{asset('dashboard_theme/img/favicon.png')}}">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>
-    @yield('title')
-  </title>
-  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-  <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-  <!-- CSS Files -->
-  <link href="{{asset('dashboard_theme/css/material-dashboard.css?v=2.1.2')}}" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="{{asset('dashboard_theme/demo/demo.css')}}" rel="stylesheet" />
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>@yield('title')</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="{{ asset('dashboard_theme/css/font-face.css')}}" rel="stylesheet" media="all">
+    <link href="{{ asset('dashboard_theme/vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{ asset('dashboard_theme/vendor/font-awesome-5/css/fontawesome-all.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{ asset('dashboard_theme/vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="{{ asset('dashboard_theme/vendor/bootstrap-4.1/bootstrap.min.css')}}" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="{{ asset('dashboard_theme/vendor/animsition/animsition.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{ asset('dashboard_theme/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{ asset('dashboard_theme/vendor/wow/animate.css')}}" rel="stylesheet" media="all">
+    <link href="{{ asset('dashboard_theme/vendor/css-hamburgers/hamburgers.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{ asset('dashboard_theme/vendor/slick/slick.css')}}" rel="stylesheet" media="all">
+    <link href="{{ asset('dashboard_theme/vendor/select2/select2.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{ asset('dashboard_theme/vendor/perfect-scrollbar/perfect-scrollbar.css')}}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{{ asset('dashboard_theme/css/theme.css')}}" rel="stylesheet" media="all">
+
 </head>
 
-<body class="">
-  <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="{{ asset('dashboard_theme/img/sidebar-1.jpg')}}">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-        Tip 2: you can also add an image using data-image tag
-    -->
-      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
-        </a></div>
-      <div class="sidebar-wrapper">
-        <ul class="nav">
-          <li class="nav-item ">
-            <a class="nav-link" href="{{ route('manage_admin') }}">
-              <i class="material-icons">dashboard</i>
-              <p>Manage Admin</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="{{ route('manage_user') }}">
-              <i class="material-icons">person</i>
-              <p>Manage User</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="{{route('manage_category')}}">
-              <i class="material-icons">content_paste</i>
-              <p>Manage Category</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="{{ route('manage_hotel') }}">
-              <i class="material-icons"><span class="material-icons">
-                king_bed
-                </span></i>
-              <p>Manage Hotels & Resorts</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="{{ route('manage_farm') }}">
-              <i class="material-icons"><span class="material-icons">
-                deck
-                </span></i>
-              <p>Manage Farms</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="{{ route('manage_room') }}">
-              <i class="material-icons"><span class="material-icons">
-                hotel
-                </span></i>
-              <p>Manage Rooms</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="{{ route('manage_hotel_booking') }}">
-              <i class="material-icons"><span class="material-icons">
-                menu_book
-                </span></i>
-              <p>Hotel Booking</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="{{ route('manage_farm_booking') }}">
-              <i class="material-icons"><span class="material-icons">
-                menu_book
-                </span></i>
-              <p>Farm Booking</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="main-panel">
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
-        <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:;">Dashboard</a>
-          </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end">
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
-                <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="material-icons">person</i>
-                  <p class="d-lg-none d-md-block">
-                    Account
-                  </p>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" href="#">Profile</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Log out</a>
+<body class="animsition">
+<div class="page-wrapper">
+    <!-- HEADER MOBILE-->
+    <header class="header-mobile d-block d-lg-none">
+        <div class="header-mobile__bar">
+            <div class="container-fluid">
+                <div class="header-mobile-inner">
+                    <a class="logo" href="index.html">
+                        <img src="{{ asset('dashboard_theme/images/icon/logo.png')}}" alt="CoolAdmin" />
+                    </a>
+                    <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                    </button>
                 </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <!-- End Navbar -->
-
-
-
-      {{-- Start Content --}}
-      @yield('body')
-      {{-- End Contnet --}}
-
-
-      {{-- Start Footer --}}
-
-      <footer class="footer">
-        <div class="container-fluid">
-          <nav class="float-left">
-            <ul>
-              <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
-                </a>
-              </li>
-              <li>
-                <a href="https://creative-tim.com/presentation">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="http://blog.creative-tim.com">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="https://www.creative-tim.com/license">
-                  Licenses
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div class="copyright float-right">
-            &copy;
-            <script>
-              document.write(new Date().getFullYear())
-            </script>, made with <i class="material-icons">favorite</i> by
-            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
-          </div>
-        </div>
-      </footer>
-    </div>
-  </div>
-  <div class="fixed-plugin">
-    <div class="dropdown show-dropdown">
-      <a href="#" data-toggle="dropdown">
-        <i class="fa fa-cog fa-2x"> </i>
-      </a>
-      <ul class="dropdown-menu">
-        <li class="header-title"> Sidebar Filters</li>
-        <li class="adjustments-line">
-          <a href="javascript:void(0)" class="switch-trigger active-color">
-            <div class="badge-colors ml-auto mr-auto">
-              <span class="badge filter badge-purple" data-color="purple"></span>
-              <span class="badge filter badge-azure" data-color="azure"></span>
-              <span class="badge filter badge-green" data-color="green"></span>
-              <span class="badge filter badge-warning" data-color="orange"></span>
-              <span class="badge filter badge-danger" data-color="danger"></span>
-              <span class="badge filter badge-rose active" data-color="rose"></span>
             </div>
-            <div class="clearfix"></div>
-          </a>
-        </li>
-        <li class="header-title">Images</li>
-        <li class="active">
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="{{ asset('dashboard_theme/img/sidebar-1.jpg') }}" alt="">
-          </a>
-        </li>
-        <li>
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="{{ asset('dashboard_theme/img/sidebar-2.jpg') }}" alt="">
-          </a>
-        </li>
-        <li>
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="{{ asset('dashboard_theme/img/sidebar-3.jpg') }}" alt="">
-          </a>
-        </li>
-        <li>
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="{{ asset('dashboard_theme/img/sidebar-4.jpg') }}" alt="">
-          </a>
-        </li>
-        <li class="button-container">
-          <a href="https://www.creative-tim.com/product/material-dashboard" target="_blank" class="btn btn-primary btn-block">Free Download</a>
-        </li>
-        <!-- <li class="header-title">Want more components?</li>
-            <li class="button-container">
-                <a href="https://www.creative-tim.com/product/material-dashboard-pro" target="_blank" class="btn btn-warning btn-block">
-                  Get the pro version
-                </a>
-            </li> -->
-        <li class="button-container">
-          <a href="https://demos.creative-tim.com/material-dashboard/docs/2.1/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block">
-            View Documentation
-          </a>
-        </li>
-        <li class="button-container github-star">
-          <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-        </li>
-        <li class="header-title">Thank you for 95 shares!</li>
-        <li class="button-container text-center">
-          <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
-          <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
-          <br>
-          <br>
-        </li>
-      </ul>
+        </div>
+        <nav class="navbar-mobile">
+            <div class="container-fluid">
+                <ul class="navbar-mobile__list list-unstyled">
+                    <li class="has-sub">
+                        <a class="js-arrow" href="#">
+                            <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                            <li>
+                                <a href="index.html">Dashboard 1</a>
+                            </li>
+                            <li>
+                                <a href="index2.html">Dashboard 2</a>
+                            </li>
+                            <li>
+                                <a href="index3.html">Dashboard 3</a>
+                            </li>
+                            <li>
+                                <a href="index4.html">Dashboard 4</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="chart.html">
+                            <i class="fas fa-chart-bar"></i>Charts</a>
+                    </li>
+                    <li>
+                        <a href="table.html">
+                            <i class="fas fa-table"></i>Tables</a>
+                    </li>
+                    <li>
+                        <a href="form.html">
+                            <i class="far fa-check-square"></i>Forms</a>
+                    </li>
+                    <li>
+                        <a href="calendar.html">
+                            <i class="fas fa-calendar-alt"></i>Calendar</a>
+                    </li>
+                    <li>
+                        <a href="map.html">
+                            <i class="fas fa-map-marker-alt"></i>Maps</a>
+                    </li>
+                    <li class="has-sub">
+                        <a class="js-arrow" href="#">
+                            <i class="fas fa-copy"></i>Pages</a>
+                        <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                            <li>
+                                <a href="login.html">Login</a>
+                            </li>
+                            <li>
+                                <a href="register.html">Register</a>
+                            </li>
+                            <li>
+                                <a href="forget-pass.html">Forget Password</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a class="js-arrow" href="#">
+                            <i class="fas fa-desktop"></i>UI Elements</a>
+                        <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                            <li>
+                                <a href="button.html">Button</a>
+                            </li>
+                            <li>
+                                <a href="badge.html">Badges</a>
+                            </li>
+                            <li>
+                                <a href="tab.html">Tabs</a>
+                            </li>
+                            <li>
+                                <a href="card.html">Cards</a>
+                            </li>
+                            <li>
+                                <a href="alert.html">Alerts</a>
+                            </li>
+                            <li>
+                                <a href="progress-bar.html">Progress Bars</a>
+                            </li>
+                            <li>
+                                <a href="modal.html">Modals</a>
+                            </li>
+                            <li>
+                                <a href="switch.html">Switchs</a>
+                            </li>
+                            <li>
+                                <a href="grid.html">Grids</a>
+                            </li>
+                            <li>
+                                <a href="fontawesome.html">Fontawesome Icon</a>
+                            </li>
+                            <li>
+                                <a href="typo.html">Typography</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- END HEADER MOBILE-->
+
+    <!-- MENU SIDEBAR-->
+    <aside class="menu-sidebar d-none d-lg-block">
+        <div class="logo">
+            <a href="#">
+                <img src="{{ asset('dashboard_theme/images/icon/logo.png')}}" alt="Cool Admin" />
+            </a>
+        </div>
+        <div class="menu-sidebar__content js-scrollbar1">
+            <nav class="navbar-sidebar">
+                <ul class="list-unstyled navbar__list">
+
+                    <li>
+                        <a href="/dashboard/admin">
+                            <i class="fas fa-tachometer-alt"></i>Manage Admin</a>
+                    </li>
+
+                    <li>
+                        <a href="">
+                            <i class="fas fa-users"></i>Manage Users</a>
+                    </li>
+
+                    <li>
+                        <a href="/dashboard/category">
+                            <i class="fas fa-chart-bar"></i>Manage Category</a>
+                    </li>
+
+                    <li>
+                        <a href="/dashboard/manage_places">
+                            <i class="fas fa-home"></i>Manage places</a>
+                    </li>
+
+                    <li>
+                        <a href="/dashboard/manage_room">
+                            <i class="fas fa-hotel"></i>Manage Rooms</a>
+                    </li>
+
+                    <li>
+                        <a href="/dashboard/manage_images">
+                            <i class="fas fa-images"></i>Manage Images</a>
+                    </li>
+
+                    <li>
+                        <a href="">
+                            <i class="fas fa-book"></i>Booking</a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <!-- END MENU SIDEBAR-->
+
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- HEADER DESKTOP-->
+        <header class="header-desktop">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="header-wrap">
+                        <form class="form-header" action="" method="POST">
+
+                        </form>
+                        <div class="header-button">
+
+                            <div class="account-wrap">
+                                <div class="account-item clearfix js-item-menu">
+                                    <div class="content">
+                                        <a class="js-acc-btn" href="#">welcome  {{session('admin')}}</a>
+                                    </div>
+                                    <div class="account-dropdown js-dropdown">
+                                        <div class="info clearfix">
+
+                                            <h5 class="name">
+                                                <a href="">{{session('admin')}}</a>
+                                            </h5>
+                                            <span class="email">{{session('admin_email')}}</span>
+
+                                        </div>
+                                        <div class="account-dropdown__footer">
+                                            <a href="/dashboard/adminlogout">
+                                                <i class="zmdi zmdi-power"></i>Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- HEADER DESKTOP-->
+
+        <!-- MAIN CONTENT-->
+        <!-- MAIN CONTENT-->
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+
+
+
+
+                    @yield('content')
+
+
+
+                    <div class="col-md-12">
+                        <div class="copyright">
+                            <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <!--   Core JS Files   -->
-  <script src="{{ asset('dashboard_theme/js/core/jquery.min.js') }}"></script>
-  <script src="{{ asset('dashboard_theme/js/core/popper.min.js') }}"></script>
-  <script src="{{ asset('dashboard_theme/js/core/bootstrap-material-design.min.js') }}"></script>
-  <script src="{{ asset('dashboard_theme/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
-  <!-- Plugin for the momentJs  -->
-  <script src="{{ asset('dashboard_theme/js/plugins/moment.min.js') }}"></script>
-  <!--  Plugin for Sweet Alert -->
-  <script src="{{ asset('dashboard_theme/js/plugins/sweetalert2.js') }}"></script>
-  <!-- Forms Validations Plugin -->
-  <script src="{{ asset('dashboard_theme/js/plugins/jquery.validate.min.js') }}"></script>
-  <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-  <script src="{{ asset('dashboard_theme/js/plugins/jquery.bootstrap-wizard.js') }}"></script>
-  <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-  <script src="{{ asset('dashboard_theme/js/plugins/bootstrap-selectpicker.js') }}"></script>
-  <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-  <script src="{{ asset('dashboard_theme/js/plugins/bootstrap-datetimepicker.min.js') }}"></script>
-  <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-  <script src="{{ asset('dashboard_theme/js/plugins/jquery.dataTables.min.js') }}"></script>
-  <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-  <script src="{{ asset('dashboard_theme/js/plugins/bootstrap-tagsinput.js') }}"></script>
-  <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-  <script src="{{ asset('dashboard_theme/js/plugins/jasny-bootstrap.min.js') }}"></script>
-  <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-  <script src="{{ asset('dashboard_theme/js/plugins/fullcalendar.min.js') }}"></script>
-  <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-  <script src="{{ asset('dashboard_theme/js/plugins/jquery-jvectormap.js') }}"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="{{ asset('dashboard_theme/js/plugins/nouislider.min.js') }}"></script>
-  <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
-  <!-- Library for adding dinamically elements -->
-  <script src="{{ asset('theme/js/plugins/arrive.min.js') }}"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-  <!-- Chartist JS -->
-  <script src="{{ asset('dashboard_theme/js/plugins/chartist.min.js') }}"></script>
-  <!--  Notifications Plugin    -->
-  <script src="{{ asset('dashboard_theme/js/plugins/bootstrap-notify.js') }}"></script>
-  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="{{ asset('dashboard_theme/js/material-dashboard.js?v=2.1.2') }}" type="text/javascript"></script>
-  <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-  <script src="{{ asset('dashboard_theme/demo/demo.js') }}"></script>
-  <script>
-    $(document).ready(function() {
-      $().ready(function() {
-        $sidebar = $('.sidebar');
+    <!-- END MAIN CONTENT-->
+    <!-- END MAIN CONTENT-->
+    <!-- END PAGE CONTAINER-->
+</div>
 
-        $sidebar_img_container = $sidebar.find('.sidebar-background');
+</div>
 
-        $full_page = $('.full-page');
+<!-- Jquery JS-->
+<script src="{{ asset('dashboard_theme/vendor/jquery-3.2.1.min.js')}}"></script>
+<!-- Bootstrap JS-->
+<script src="{{ asset('dashboard_theme/vendor/bootstrap-4.1/popper.min.js')}}"></script>
+<script src="{{ asset('dashboard_theme/vendor/bootstrap-4.1/bootstrap.min.js')}}"></script>
+<!-- Vendor JS       -->
+<script src="{{ asset('dashboard_theme/vendor/slick/slick.min.js')}}">
+</script>
+<script src="{{ asset('dashboard_theme/vendor/wow/wow.min.js')}}"></script>
+<script src="{{ asset('dashboard_theme/vendor/animsition/animsition.min.js')}}"></script>
+<script src="{{ asset('dashboard_theme/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js')}}">
+</script>
+<script src="{{ asset('dashboard_theme/vendor/counter-up/jquery.waypoints.min.js')}}"></script>
+<script src="{{ asset('dashboard_theme/vendor/counter-up/jquery.counterup.min.js')}}">
+</script>
+<script src="{{ asset('dashboard_theme/vendor/circle-progress/circle-progress.min.js')}}"></script>
+<script src="{{ asset('dashboard_theme/vendor/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
+<script src="{{ asset('dashboard_theme/vendor/chartjs/Chart.bundle.min.js')}}"></script>
+<script src="{{ asset('dashboard_theme/vendor/select2/select2.min.js')}}">
+</script>
 
-        $sidebar_responsive = $('body > .navbar-collapse');
+<!-- Main JS-->
+<script src="{{ asset('dashboard_theme/js/main.js')}}"></script>
 
-        window_width = $(window).width();
-
-        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
-
-        if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
-          if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
-            $('.fixed-plugin .dropdown').addClass('open');
-          }
-
-        }
-
-        $('.fixed-plugin a').click(function(event) {
-          // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
-          if ($(this).hasClass('switch-trigger')) {
-            if (event.stopPropagation) {
-              event.stopPropagation();
-            } else if (window.event) {
-              window.event.cancelBubble = true;
-            }
-          }
-        });
-
-        $('.fixed-plugin .active-color span').click(function() {
-          $full_page_background = $('.full-page-background');
-
-          $(this).siblings().removeClass('active');
-          $(this).addClass('active');
-
-          var new_color = $(this).data('color');
-
-          if ($sidebar.length != 0) {
-            $sidebar.attr('data-color', new_color);
-          }
-
-          if ($full_page.length != 0) {
-            $full_page.attr('filter-color', new_color);
-          }
-
-          if ($sidebar_responsive.length != 0) {
-            $sidebar_responsive.attr('data-color', new_color);
-          }
-        });
-
-        $('.fixed-plugin .background-color .badge').click(function() {
-          $(this).siblings().removeClass('active');
-          $(this).addClass('active');
-
-          var new_color = $(this).data('background-color');
-
-          if ($sidebar.length != 0) {
-            $sidebar.attr('data-background-color', new_color);
-          }
-        });
-
-        $('.fixed-plugin .img-holder').click(function() {
-          $full_page_background = $('.full-page-background');
-
-          $(this).parent('li').siblings().removeClass('active');
-          $(this).parent('li').addClass('active');
-
-
-          var new_image = $(this).find("img").attr('src');
-
-          if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-            $sidebar_img_container.fadeOut('fast', function() {
-              $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-              $sidebar_img_container.fadeIn('fast');
-            });
-          }
-
-          if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
-            $full_page_background.fadeOut('fast', function() {
-              $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-              $full_page_background.fadeIn('fast');
-            });
-          }
-
-          if ($('.switch-sidebar-image input:checked').length == 0) {
-            var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
-            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
-            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-          }
-
-          if ($sidebar_responsive.length != 0) {
-            $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
-          }
-        });
-
-        $('.switch-sidebar-image input').change(function() {
-          $full_page_background = $('.full-page-background');
-
-          $input = $(this);
-
-          if ($input.is(':checked')) {
-            if ($sidebar_img_container.length != 0) {
-              $sidebar_img_container.fadeIn('fast');
-              $sidebar.attr('data-image', '#');
-            }
-
-            if ($full_page_background.length != 0) {
-              $full_page_background.fadeIn('fast');
-              $full_page.attr('data-image', '#');
-            }
-
-            background_image = true;
-          } else {
-            if ($sidebar_img_container.length != 0) {
-              $sidebar.removeAttr('data-image');
-              $sidebar_img_container.fadeOut('fast');
-            }
-
-            if ($full_page_background.length != 0) {
-              $full_page.removeAttr('data-image', '#');
-              $full_page_background.fadeOut('fast');
-            }
-
-            background_image = false;
-          }
-        });
-
-        $('.switch-sidebar-mini input').change(function() {
-          $body = $('body');
-
-          $input = $(this);
-
-          if (md.misc.sidebar_mini_active == true) {
-            $('body').removeClass('sidebar-mini');
-            md.misc.sidebar_mini_active = false;
-
-            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
-
-          } else {
-
-            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
-
-            setTimeout(function() {
-              $('body').addClass('sidebar-mini');
-
-              md.misc.sidebar_mini_active = true;
-            }, 300);
-          }
-
-          // we simulate the window Resize so the charts will get updated in realtime.
-          var simulateWindowResize = setInterval(function() {
-            window.dispatchEvent(new Event('resize'));
-          }, 180);
-
-          // we stop the simulation of Window Resize after the animations are completed
-          setTimeout(function() {
-            clearInterval(simulateWindowResize);
-          }, 1000);
-
-        });
-      });
-    });
-  </script>
-  <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
-      md.initDashboardPageCharts();
-
-    });
-  </script>
 </body>
 
 </html>
+<!-- end document-->

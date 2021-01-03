@@ -1,165 +1,100 @@
 @extends('dashboard_layouts.admin_main')
 
-@section('body')
+@section('content')
 
-<div class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-8">
-          <div class="card">
-            <div class="card-header card-header-primary">
-              <h4 class="card-title">Manage Hotels & Resorts</h4>
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong>Manage</strong> Places
             </div>
-            <div class="card-body">
-                <form action="" method="" enctype="multipart/form-data">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="form-group">
-                                <label class="bmd-label-floating">Full Name</label>
-                                <input type="text" name="name" class="form-control" value="">
-                            </div>
+            <div class="card-body card-block">
+                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="select" class=" form-control-label">Select Category</label>
                         </div>
-                        <div class="col-md-8">
-                            <div class="form-group">
-                                {{-- <label class="bmd-label-floating">Type</label> --}}
-                                {{-- <input type="text"  name="type" class="form-control" value=""> --}}
-                                <div class="dropdown">
-
-                                    <div class="form-group">
-                                        <select class="custom-select btn btn-primary pull-left" required>
-                                          <option value="">Open this select menu</option>
-                                        </select>
-                                        <div class="invalid-feedback">Example invalid custom select feedback</div>
-                                      </div>
-
-
-                                  </div>
-
-                            </div>
+                        <div class="col-12 col-md-9">
+                            <select name="select" id="select" class="form-control">
+                                @foreach($categorys as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="form-group">
-                                <label class="bmd-label-floating">Description</label>
-                                <input type="text" name="desc" class="form-control" value="">
-                            </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Place Name</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="text" id="text-input" name="text-input" placeholder="Text" class="form-control">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="form-group">
-                                <label class="bmd-label-floating">location</label>
-                                <input type="text" name="location" class="form-control" value="">
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="form-group">
-                                <label class="bmd-label-floating">Stars</label>
-                                <input type="text" name="star" class="form-control" value="">
-                            </div>
-                        </div>
-                        <label for="imgage"></label>
-                        <input class="btn btn-primary col-md-6" name="img" type="file" id="img" name="img" accept="image/*">
 
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="textarea-input" class=" form-control-label">Place Description</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <textarea name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control"></textarea>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary pull-right" name="submit">Add</button>
-                    <div class="clearfix"></div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="select" class=" form-control-label">Select Location</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <select name="select" id="select" class="form-control">
+                                <option value="0">Amman</option>
+                                <option value="1">Zarqa</option>
+                                <option value="2">Irbid</option>
+                                <option value="2">as-Salt</option>
+                                <option value="2">al-Karak</option>
+                                <option value="2">Madaba</option>
+                                <option value="2">Jerash</option>
+                                <option value="2">Ma'an</option>
+                                <option value="2">at-Tafila</option>
+                                <option value="2">Aqaba</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="select" class=" form-control-label">Select Rate</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <select name="select" id="select" class="form-control">
+                                <option value="0">5 stars</option>
+                                <option value="4">4 stars</option>
+                                <option value="3">3 stars</option>
+                                <option value="2">2 stars</option>
+                                <option value="1">1 star</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="file-input" class=" form-control-label">Uploaded Image</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="file" id="file-input" name="file-input" class="form-control-file">
+                        </div>
+                    </div>
+
                 </form>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-
-  <div class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-header card-header-primary">
-              <h4 class="card-title ">Hotels & Resorts Table</h4>
+            <div class="card-footer">
+                <div>
+                    <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                        <span id="payment-button-amount">Create Place</span>
+                    </button>
+                </div>
             </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table">
-                  <thead class=" text-primary">
-                    <th>
-                      ID
-                    </th>
-                    <th>
-                      Name
-                    </th>
-                    <th>
-                      Type
-                    </th>
-                    <th>
-                      Description
-                    </th>
-                    <th>
-                      Location
-                    </th>
-                    <th>
-                      Stars
-                    </th>
-                    <th>
-                      Image
-                    </th>
-                    <th>
-                      Edit
-                    </th>
-                    <th>
-                      Delete
-                    </th>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        1
-                      </td>
-                      <td>
-                        Dakota Rice
-                      </td>
-                      <td>
-                        Niger
-                      </td>
-                      <td>
-                        Oud-Turnhout
-                      </td>
-                      <td class="text-primary">
-                        $36,738
-                      </td>
-                      <td>
-                        Oud-Turnhout
-                      </td>
-                      <td class="text-primary">
-                        $36,738
-                      </td>
-                      <td>
-                        <a class="text-primary" href="#"><span class="material-icons">
-                            edit
-                            </span></a>
-                      </td>
-                      <td class="text-primary">
-                        <a class="text-danger" href="#"><span class="material-icons">
-                            delete
-                            </span></a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
+
     </div>
-  </div>
- </div>
-
-
 @endsection

@@ -15,15 +15,15 @@ class CreatePlacesTable extends Migration
     {
         Schema::create('places', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('cat_id');
+            $table->integer('category_id')->unsigned()->nullable()->index();
             $table->string('name');
-            $table->string('type');
             $table->text('image');
-            $table->string('desc');
+            $table->text('desc');
             $table->string('location');
             $table->integer('stars')->nullable();
             $table->integer('num_rooms')->nullable();
             $table->integer('capacity')->nullable();
+            $table->integer('price')->nullable();
             $table->timestamps();
         });
     }
